@@ -8,22 +8,22 @@
         android:id="@+id/expression"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="@dimen/spacing_level_10"
         android:gravity="end"
         android:lines="1"
         android:text=""
         android:textColor="@color/black"
-        android:textSize="40sp" />
+        android:textSize="@dimen/font_size_40" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="@dimen/spacing_level_10"
         android:gravity="end"
         android:lines="1"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="@dimen/font_size_30" />
 
     <LinearLayout
         android:layout_width="match_parent"

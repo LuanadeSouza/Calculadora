@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacing_level_10">10dp</dimen>
+    <dimen name="font_size_30">30.00sp</dimen>
+    <dimen name="font_size_40">40.00sp</dimen>
+
+</resources>
