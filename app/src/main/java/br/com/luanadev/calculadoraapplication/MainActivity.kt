@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.ExpressionBuilder
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,28 +57,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setOperators() {
-        add_up.setOnClickListener { makeAnExpression("+", false) }
-        subtraction.setOnClickListener { makeAnExpression("-", false) }
-        multiplication.setOnClickListener { makeAnExpression("*", false) }
-        division.setOnClickListener { makeAnExpression("/", false) }
+        add_up.setOnClickListener { calculateTheExpress("+", false) }
+        subtraction.setOnClickListener { calculateTheExpress("-", false) }
+        multiplication.setOnClickListener { calculateTheExpress("*", false) }
+        division.setOnClickListener { calculateTheExpress("/", false) }
     }
 
     private fun setNumber() {
-        number_zero.setOnClickListener { makeAnExpression("0", true) }
-        number_one.setOnClickListener { makeAnExpression("1", true) }
-        number_two.setOnClickListener { makeAnExpression("2", true) }
-        number_three.setOnClickListener { makeAnExpression("3", true) }
-        number_four.setOnClickListener { makeAnExpression("4", true) }
-        number_five.setOnClickListener { makeAnExpression("5", true) }
-        number_six.setOnClickListener { makeAnExpression("6", true) }
-        number_seven.setOnClickListener { makeAnExpression("7", true) }
-        number_eight.setOnClickListener { makeAnExpression("8", true) }
-        number_nine.setOnClickListener { makeAnExpression("9", true) }
-        ponto.setOnClickListener { makeAnExpression(".", true) }
+        number_zero.setOnClickListener { calculateTheExpress("0", true) }
+        number_one.setOnClickListener { calculateTheExpress("1", true) }
+        number_two.setOnClickListener { calculateTheExpress("2", true) }
+        number_three.setOnClickListener { calculateTheExpress("3", true) }
+        number_four.setOnClickListener { calculateTheExpress("4", true) }
+        number_five.setOnClickListener { calculateTheExpress("5", true) }
+        number_six.setOnClickListener { calculateTheExpress("6", true) }
+        number_seven.setOnClickListener { calculateTheExpress("7", true) }
+        number_eight.setOnClickListener { calculateTheExpress("8", true) }
+        number_nine.setOnClickListener { calculateTheExpress("9", true) }
+        ponto.setOnClickListener { calculateTheExpress(".", true) }
 
     }
 
-    private fun makeAnExpression(data: String, clearData: Boolean) {
+    private fun calculateTheExpress(data: String, clearData: Boolean) {
         if (result.text.isNotEmpty()) {
             expression.text = ""
         }
@@ -92,5 +91,4 @@ class MainActivity : AppCompatActivity() {
             result.text = ""
         }
     }
-
 }
