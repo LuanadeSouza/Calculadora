@@ -17,16 +17,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         setNumber()
-        setOperadores()
-        setLimpar()
-        setDelet()
-        setResult()
+        setOperators()
+        setClear()
+        setDelete()
+        setExpectedResult()
     }
 
-    private fun setResult() {
+    private fun setExpectedResult() {
         equal.setOnClickListener {
             try {
-                val expressao = ExpressionBuilder(expressao.text.toString()).build()
+                val expressao = ExpressionBuilder(expression.text.toString()).build()
                 val resultado = expressao.evaluate()
                 val longResult = resultado.toLong()
                 if (resultado == longResult.toDouble()) {
@@ -40,24 +40,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setDelet() {
+    private fun setDelete() {
         backspace.setOnClickListener {
-            val textoDigitado = expressao.text.toString()
+            val textoDigitado = expression.text.toString()
             if (textoDigitado.isNotBlank()) {
-                expressao.text = textoDigitado.substring(0, textoDigitado.length - 1)
+                expression.text = textoDigitado.substring(0, textoDigitado.length - 1)
             }
             result.text = ""
         }
     }
 
-    private fun setLimpar() {
+    private fun setClear() {
         clean.setOnClickListener {
-            expressao.text = ""
+            expression.text = ""
             result.text = ""
         }
     }
 
-    private fun setOperadores() {
+    private fun setOperators() {
         add_up.setOnClickListener { acrescentarUmaExpressao("+", false) }
         subtraction.setOnClickListener { acrescentarUmaExpressao("-", false) }
         multiplication.setOnClickListener { acrescentarUmaExpressao("*", false) }
@@ -81,14 +81,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun acrescentarUmaExpressao(dados: String, limpar_dados: Boolean) {
         if (result.text.isNotEmpty()) {
-            expressao.text = ""
+            expression.text = ""
         }
         if (limpar_dados) {
             result.text = ""
-            expressao.append(dados)
+            expression.append(dados)
         } else {
-            expressao.append(result.text)
-            expressao.append(dados)
+            expression.append(result.text)
+            expression.append(dados)
             result.text = ""
         }
     }
