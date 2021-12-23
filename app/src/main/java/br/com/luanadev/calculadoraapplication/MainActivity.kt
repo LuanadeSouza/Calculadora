@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         number_eight.setOnClickListener { calculateTheExpress("8", true) }
         number_nine.setOnClickListener { calculateTheExpress("9", true) }
         ponto.setOnClickListener { calculateTheExpress(".", true) }
-
     }
 
     private fun calculateTheExpress(data: String, clearData: Boolean) {
