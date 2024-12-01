@@ -8,16 +8,12 @@ import kotlinx.coroutines.flow.StateFlow
 
 class CalculatorViewModel : ViewModel() {
 
-    // Estado para o texto exibido no display
     private val _displayText = MutableStateFlow("0")
     val displayText: StateFlow<String> = _displayText
 
-    // Estado para o histórico de operações
     private val _history = MutableStateFlow<List<OperationHistory>>(emptyList())
     val history: StateFlow<List<OperationHistory>> = _history
 
-    // Operação atual (armazenada para cálculo)
-    private var currentOperation: String? = null
     private var previousValue: Double? = null
     private var currentOperator: String? = null
 
@@ -28,7 +24,7 @@ class CalculatorViewModel : ViewModel() {
             "C" -> clearAll()
             "±" -> toggleSign()
             "%" -> applyPercentage()
-            "+", "−", "×", "÷" -> setOperator(input)
+            "+", "−", "×", "÷", "^", "√" -> setOperator(input)
             "=" -> calculateResult()
             else -> appendNumber(input)
         }
@@ -36,7 +32,6 @@ class CalculatorViewModel : ViewModel() {
 
     private fun clearAll() {
         _displayText.value = "0"
-        currentOperation = null
         previousValue = null
         currentOperator = null
     }
@@ -55,7 +50,7 @@ class CalculatorViewModel : ViewModel() {
         val value = _displayText.value.toDoubleOrNull() ?: return
         previousValue = value
         currentOperator = operator
-        _displayText.value = "0"
+        _displayText.value = if (operator == "√") "0" else "0"
     }
 
     private fun calculateResult() {
@@ -63,19 +58,15 @@ class CalculatorViewModel : ViewModel() {
         val operator = currentOperator ?: return
         val firstValue = previousValue ?: return
 
-        // Cria a operação
         val operation = OperationHistory(
-            operation = "$firstValue $operator $secondValue",
-            result = calculateOperation.execute(firstValue, secondValue, operator).toString()
+            operation = if (operator == "√") "$operator($firstValue)" else "$firstValue $operator $secondValue",
+            result = if (operator == "√") calculateOperation.execute(firstValue, operator = "√").toString()
+            else calculateOperation.execute(firstValue, secondValue, operator).toString()
         )
 
-        // Atualiza o histórico
         _history.value = _history.value + operation
-
-        // Atualiza o display com o resultado
         _displayText.value = operation.result
 
-        // Reseta os valores
         previousValue = null
         currentOperator = null
     }
@@ -84,3 +75,4 @@ class CalculatorViewModel : ViewModel() {
         _displayText.value = if (_displayText.value == "0") input else _displayText.value + input
     }
 }
+
