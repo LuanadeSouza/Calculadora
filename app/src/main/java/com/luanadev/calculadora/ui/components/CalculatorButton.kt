@@ -1,15 +1,22 @@
 package com.luanadev.calculadora.ui.components
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,34 +30,45 @@ fun CalculatorButton(
     onClick: () -> Unit,
     backgroundColor: Color,
     textColor: Color,
-    modifier: Modifier = Modifier // Permite personalização externa do botão
+    modifier: Modifier = Modifier
 ) {
     var isPressed by remember { mutableStateOf(false) }
-
-    // Animação para suavizar a transição de cores ao pressionar o botão
     val animatedColor by animateColorAsState(
         targetValue = if (isPressed) backgroundColor.copy(alpha = 0.7f) else backgroundColor,
         label = "ButtonColorAnimation"
     )
+    val haptic = LocalHapticFeedback.current
 
     Button(
         onClick = {
+            haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove) // Feedback tátil
             isPressed = true
-            onClick() // Executa a ação do botão
+            onClick()
             isPressed = false
         },
-        shape = CircleShape, // Botão arredondado
+        shape = CircleShape,
         colors = ButtonDefaults.buttonColors(containerColor = animatedColor),
         modifier = modifier
-            .size(80.dp) // Tamanho padrão do botão
-            .padding(4.dp) // Espaçamento entre os botões
+            .size(80.dp)
+            .semantics {
+                contentDescription = when (label) {
+                    "+" -> "Botão de soma"
+                    "C" -> "Botão limpar"
+                    "=" -> "Botão de igual"
+                    "." -> "Botão de ponto decimal"
+                    "±" -> "Botão para alternar o sinal"
+                    "%" -> "Botão de porcentagem"
+                    "√" -> "Botão de raiz quadrada"
+                    else -> "Botão $label"
+                }
+            }
     ) {
         Text(
             text = label,
-            fontSize = 26.sp, // Tamanho da fonte
-            fontWeight = FontWeight.Bold, // Negrito para maior impacto
-            fontFamily = MontserratFont, // Fonte Montserrat
-            color = textColor // Cor do texto
+            fontSize = 26.sp,
+            fontWeight = FontWeight.Bold,
+            fontFamily = MontserratFont,
+            color = textColor
         )
     }
 }
@@ -75,8 +93,8 @@ fun PreviewCalculatorButtonGold() {
         CalculatorButton(
             label = "C",
             onClick = {},
-            backgroundColor = Color(0xFFDAA520), // Dourado
-            textColor = Color.Black // Preto
+            backgroundColor = Color(0xFFC9B037), // Novo dourado metálico
+            textColor = Color.White // Preto
         )
     }
 }
