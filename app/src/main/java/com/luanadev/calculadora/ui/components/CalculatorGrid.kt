@@ -1,10 +1,6 @@
 package com.luanadev.calculadora.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,43 +15,60 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
         listOf("7", "8", "9", "×"),
         listOf("4", "5", "6", "−"),
         listOf("1", "2", "3", "+"),
-        listOf("0", ".", "=")
+        listOf("0", ".", "=") // Última linha
     )
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp), // Margem horizontal para o grid
-        verticalArrangement = Arrangement.spacedBy(8.dp) // Espaçamento entre as linhas
+            .padding(horizontal = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        for (row in buttons) {
+        for ((index, row) in buttons.withIndex()) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp) // Espaçamento entre os botões
+                horizontalArrangement = if (index == buttons.lastIndex) {
+                    Arrangement.End // Alinha a última linha ao lado direito
+                } else {
+                    Arrangement.SpaceEvenly // Espaçamento uniforme para as outras linhas
+                }
             ) {
                 for (button in row) {
                     val isOperator = button in listOf("+", "−", "×", "÷", "=")
                     val isAction = button in listOf("C", "±", "%")
 
+                    // Ajusta o botão "0" para ocupar mais espaço horizontal
+                    val modifier = if (button == "0" && index == buttons.lastIndex) {
+                        Modifier
+                            .weight(2f) // Ocupa o dobro do espaço
+                            .size(80.dp)
+                    } else {
+                        Modifier.size(80.dp)
+                    }
+
                     CalculatorButton(
                         label = button,
                         onClick = { onButtonClick(button) },
                         backgroundColor = when {
-                            isOperator -> Color(0xFFDAA520) // Dourado para operações
-                            isAction -> Color(0xFF333333) // Cinza escuro para ações
+                            isOperator -> Color(0xFF24394C) // Azul profundo para operadores
+                            isAction -> Color(0xFFDAA520) // Dourado para ações
                             else -> Color(0xFFE0E0E0) // Cinza claro para números
                         },
                         textColor = when {
                             isOperator -> Color.White
-                            isAction -> Color.White
+                            isAction -> Color.Black
                             else -> Color.Black
-                        }
+                        },
+                        modifier = modifier.padding(4.dp) // Espaçamento entre os botões
                     )
                 }
             }
         }
     }
 }
+
+
+
 
 @Preview(showBackground = true)
 @Composable

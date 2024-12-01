@@ -1,12 +1,13 @@
 package com.luanadev.calculadora.ui.components
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -21,104 +22,74 @@ fun CalculatorButton(
     label: String,
     onClick: () -> Unit,
     backgroundColor: Color,
-    textColor: Color
+    textColor: Color,
+    modifier: Modifier = Modifier // Permite personalização externa do botão
 ) {
+    var isPressed by remember { mutableStateOf(false) }
+
+    // Animação para suavizar a transição de cores ao pressionar o botão
+    val animatedColor by animateColorAsState(
+        targetValue = if (isPressed) backgroundColor.copy(alpha = 0.7f) else backgroundColor,
+        label = "ButtonColorAnimation"
+    )
+
     Button(
-        onClick = onClick,
-        shape = CircleShape,
-        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
-        modifier = Modifier
-            .size(80.dp) // Botão maior para melhor usabilidade
+        onClick = {
+            isPressed = true
+            onClick() // Executa a ação do botão
+            isPressed = false
+        },
+        shape = CircleShape, // Botão arredondado
+        colors = ButtonDefaults.buttonColors(containerColor = animatedColor),
+        modifier = modifier
+            .size(80.dp) // Tamanho padrão do botão
             .padding(4.dp) // Espaçamento entre os botões
     ) {
         Text(
             text = label,
-            fontSize = 26.sp,
-            fontWeight = FontWeight.Bold,
-            fontFamily = MontserratFont,
-            color = textColor
+            fontSize = 26.sp, // Tamanho da fonte
+            fontWeight = FontWeight.Bold, // Negrito para maior impacto
+            fontFamily = MontserratFont, // Fonte Montserrat
+            color = textColor // Cor do texto
         )
     }
 }
 
-@Preview(showBackground = true, name = "Calculator Button Preview")
+@Preview(showBackground = true, name = "Calculator Button Preview - Azul")
 @Composable
-fun PreviewCalculatorButton() {
-    // Aplicando o tema da calculadora
-    CalculadoraTheme {
-        // Exemplo de botão de número
-        CalculatorButton(
-            label = "5",
-            onClick = {},
-            backgroundColor = Color(0xFFE0E0E0), // Cinza claro
-            textColor = Color.Black
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "Opção 1 - Dourado Elegante")
-@Composable
-fun PreviewButtonOption1() {
-    CalculadoraTheme {
-        CalculatorButton(
-            label = "5",
-            onClick = {},
-            backgroundColor = Color(0xFFDAA520), // Dourado
-            textColor = Color.White // Texto branco
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "Opção 2 - Preto com Dourado")
-@Composable
-fun PreviewButtonOption2() {
+fun PreviewCalculatorButtonBlue() {
     CalculadoraTheme {
         CalculatorButton(
             label = "+",
             onClick = {},
-            backgroundColor = Color(0xFF121212), // Preto
-            textColor = Color(0xFFDAA520) // Dourado
+            backgroundColor = Color(0xFF24394C), // Azul profundo
+            textColor = Color.White // Branco
         )
     }
 }
 
-@Preview(showBackground = true, name = "Opção 3 - Cinza Minimalista")
+@Preview(showBackground = true, name = "Calculator Button Preview - Dourado")
 @Composable
-fun PreviewButtonOption3() {
+fun PreviewCalculatorButtonGold() {
     CalculadoraTheme {
         CalculatorButton(
-            label = "0",
+            label = "C",
+            onClick = {},
+            backgroundColor = Color(0xFFDAA520), // Dourado
+            textColor = Color.Black // Preto
+        )
+    }
+}
+
+@Preview(showBackground = true, name = "Calculator Button Preview - Cinza")
+@Composable
+fun PreviewCalculatorButtonGray() {
+    CalculadoraTheme {
+        CalculatorButton(
+            label = "5",
             onClick = {},
             backgroundColor = Color(0xFFE0E0E0), // Cinza claro
             textColor = Color.Black // Preto
         )
     }
 }
-
-@Preview(showBackground = true, name = "Opção 4 - Azul Moderno")
-@Composable
-fun PreviewButtonOption4() {
-    CalculadoraTheme {
-        CalculatorButton(
-            label = "=",
-            onClick = {},
-            backgroundColor = Color(0xFF1E88E5), // Azul
-            textColor = Color.White // Branco
-        )
-    }
-}
-
-@Preview(showBackground = true, name = "Opção 5 - Vermelho Sofisticado")
-@Composable
-fun PreviewButtonOption5() {
-    CalculadoraTheme {
-        CalculatorButton(
-            label = "C",
-            onClick = {},
-            backgroundColor = Color(0xFFD32F2F), // Vermelho
-            textColor = Color.White // Branco
-        )
-    }
-}
-
-

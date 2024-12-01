@@ -3,70 +3,16 @@ package com.luanadev.calculadora
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import com.luanadev.calculadora.ui.screen.MainScreen
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
-import com.luanadev.calculadora.ui.theme.MontserratFont
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             CalculadoraTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainScreen() // Chama a função MainScreen como a tela principal
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-        fontWeight = FontWeight.Bold,
-        fontFamily = MontserratFont
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CalculadoraTheme {
-        Greeting("Android")
-    }
-}
-
-@Composable
-fun LuxuriousTextPreview() {
-    CalculadoraTheme {
-        Text(
-            text = "Calculadora de Luxo",
-            color = MaterialTheme.colorScheme.primary,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            fontFamily = MontserratFont
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewLuxuriousText() {
-    LuxuriousTextPreview()
 }
