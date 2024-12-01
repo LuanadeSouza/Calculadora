@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
-import com.luanadev.calculadora.ui.theme.LuxuryFont
+import com.luanadev.calculadora.ui.theme.MontserratFont
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +40,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier,
         fontWeight = FontWeight.Bold,
-        fontFamily = LuxuryFont
+        fontFamily = MontserratFont
     )
 }
 
@@ -60,7 +60,7 @@ fun LuxuriousTextPreview() {
             color = MaterialTheme.colorScheme.primary,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            fontFamily = LuxuryFont
+            fontFamily = MontserratFont
         )
     }
 }

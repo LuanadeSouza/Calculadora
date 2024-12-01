@@ -45,9 +45,9 @@ private val LightColorScheme = lightColorScheme(
     onSurface = BlackLuxury
 )
 
-val LuxuryFont = FontFamily(
-    Font(R.font.playfair_display_regular, FontWeight.Normal),
-    Font(R.font.playfair_display_bold, FontWeight.Bold)
+val MontserratFont = FontFamily(
+    Font(R.font.montserrat_regular, FontWeight.Normal),
+    Font(R.font.montserrat_bold, FontWeight.Bold)
 )
 
 @Composable
@@ -79,7 +79,7 @@ fun LuxuriousTextPreview() {
             color = MaterialTheme.colorScheme.primary,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            fontFamily = LuxuryFont
+            fontFamily = MontserratFont
         )
     }
 }

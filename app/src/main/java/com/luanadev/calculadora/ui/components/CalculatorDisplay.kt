@@ -12,7 +12,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.luanadev.calculadora.ui.theme.LuxuryFont
+import com.luanadev.calculadora.ui.theme.MontserratFont
 
 @Composable
 fun CalculatorDisplay(
@@ -36,7 +36,7 @@ fun CalculatorDisplay(
                 text = displayText,
                 style = MaterialTheme.typography.headlineLarge.copy(
                     fontSize = 48.sp,
-                    fontFamily = LuxuryFont,
+                    fontFamily = MontserratFont,
                 ),
                 textAlign = TextAlign.End,
                 color = MaterialTheme.colorScheme.onSurface
