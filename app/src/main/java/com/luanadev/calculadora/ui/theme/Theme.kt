@@ -10,6 +10,11 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import com.luanadev.calculadora.R
+
 
 // Definição da Paleta de Cores Luxuosas
 val BlackLuxury = Color(0xFF121212)
@@ -35,6 +40,11 @@ private val LightColorScheme = lightColorScheme(
     surface = LightGray,
     onBackground = BlackLuxury,
     onSurface = BlackLuxury
+)
+
+val LuxuryFont = FontFamily(
+    Font(R.font.playfair_display_regular, FontWeight.Normal),
+    Font(R.font.playfair_display_bold, FontWeight.Bold)
 )
 
 @Composable

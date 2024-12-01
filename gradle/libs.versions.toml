@@ -11,6 +11,8 @@ composeBom = "2024.11.00"
 uiUtil = "1.7.5"
 materialIcons = "1.7.5"
 coroutines = "1.7.3"
+composeGoogleFonts = "1.7.5"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,6 +32,9 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-ui-util = { group = "androidx.compose.ui", name = "ui-util", version.ref = "uiUtil" }
 androidx-material-icons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIcons" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+androidx-compose-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "composeGoogleFonts" }
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
