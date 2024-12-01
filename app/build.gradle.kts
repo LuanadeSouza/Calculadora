@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.luanadev.calculadora"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.luanadev.calculadora"
@@ -56,4 +56,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.ui.util)
+    implementation(libs.androidx.material.icons)
+    implementation(libs.kotlinx.coroutines.android)
 }
