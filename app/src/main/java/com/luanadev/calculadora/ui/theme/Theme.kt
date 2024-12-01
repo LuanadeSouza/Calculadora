@@ -3,6 +3,7 @@ package com.luanadev.calculadora.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -13,6 +14,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.luanadev.calculadora.R
 
 
@@ -66,4 +69,23 @@ fun CalculadoraTheme(
     MaterialTheme(
         colorScheme = colorScheme, typography = Typography, content = content
     )
+}
+
+@Composable
+fun LuxuriousTextPreview() {
+    CalculadoraTheme {
+        Text(
+            text = "Calculadora de Luxo",
+            color = MaterialTheme.colorScheme.primary,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            fontFamily = LuxuryFont
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewLuxuriousText() {
+    LuxuriousTextPreview()
 }
