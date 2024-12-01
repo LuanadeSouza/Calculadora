@@ -6,11 +6,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -22,6 +18,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
+import com.luanadev.calculadora.ui.theme.PrimaryColor
+import com.luanadev.calculadora.ui.theme.SecondaryColor
+import com.luanadev.calculadora.ui.theme.TextPrimary
 import com.luanadev.calculadora.ui.theme.MontserratFont
 
 @Composable
@@ -73,6 +72,20 @@ fun CalculatorButton(
     }
 }
 
+@Preview(showBackground = true, name = "Calculator Button Preview")
+@Composable
+fun PreviewCalculatorButton() {
+    CalculadoraTheme {
+        CalculatorButton(
+            label = "+",
+            onClick = {},
+            backgroundColor = PrimaryColor,
+            textColor = TextPrimary
+        )
+    }
+}
+
+
 @Preview(showBackground = true, name = "Calculator Button Preview - Azul")
 @Composable
 fun PreviewCalculatorButtonBlue() {
@@ -80,7 +93,7 @@ fun PreviewCalculatorButtonBlue() {
         CalculatorButton(
             label = "+",
             onClick = {},
-            backgroundColor = Color(0xFF24394C), // Azul profundo
+            backgroundColor = PrimaryColor, // Azul profundo
             textColor = Color.White // Branco
         )
     }
@@ -93,8 +106,8 @@ fun PreviewCalculatorButtonGold() {
         CalculatorButton(
             label = "C",
             onClick = {},
-            backgroundColor = Color(0xFFC9B037), // Novo dourado metálico
-            textColor = Color.White // Preto
+            backgroundColor = SecondaryColor, // Novo dourado metálico
+            textColor = TextPrimary   // Branco
         )
     }
 }

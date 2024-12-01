@@ -5,13 +5,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
+import com.luanadev.calculadora.ui.theme.DarkBackground
+import com.luanadev.calculadora.ui.theme.LightBackground
+import com.luanadev.calculadora.ui.theme.PrimaryColor
+import com.luanadev.calculadora.ui.theme.SecondaryColor
+import com.luanadev.calculadora.ui.theme.TextPrimary
 
 @Composable
 fun CalculatorGrid(onButtonClick: (String) -> Unit) {
@@ -42,23 +45,21 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
                         label = button,
                         onClick = { onButtonClick(button) },
                         backgroundColor = when {
-                            isOperator -> Color(0xFF24394C) // Azul profundo para operadores
-                            isAction -> Color(0xFFC9B037) // Novo dourado metálico para ações
-                            else -> Color(0xFFE0E0E0) // Cinza claro para números
+                            isOperator -> PrimaryColor // Azul Escuro
+                            isAction -> SecondaryColor // Verde Esmeralda
+                            else -> LightBackground // Cinza Claro
                         },
                         textColor = when {
-                            isOperator -> Color.White
-                            isAction -> Color.Black
-                            else -> Color.Black
-                        },
-                        modifier = Modifier.size(80.dp) // Botão do mesmo tamanho
+                            isOperator -> TextPrimary // Branco
+                            isAction -> TextPrimary // Branco
+                            else -> DarkBackground // Azul Acinzentado
+                        }
                     )
                 }
             }
         }
     }
 }
-
 
 
 @Preview(showBackground = true)
