@@ -18,7 +18,6 @@ import com.luanadev.calculadora.viewmodel.CalculatorViewModel
 
 @Composable
 fun MainScreen(calculatorViewModel: CalculatorViewModel = viewModel()) {
-    // Observa os estados do ViewModel
     val displayText = calculatorViewModel.displayText.collectAsState().value
     val history = calculatorViewModel.history.collectAsState().value
 
@@ -28,13 +27,10 @@ fun MainScreen(calculatorViewModel: CalculatorViewModel = viewModel()) {
             .padding(Spacing_16),
         verticalArrangement = Arrangement.spacedBy(Spacing_16)
     ) {
-        // Exibe o Histórico
         CalculatorHistory(history = history)
 
-        // Exibe o Display
         CalculatorDisplay(displayText = displayText)
 
-        // Adiciona o Grid de Botões
         CalculatorGrid { button ->
             calculatorViewModel.onButtonClicked(button)
         }
