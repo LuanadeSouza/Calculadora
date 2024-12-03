@@ -13,10 +13,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import com.luanadev.calculadora.data.model.OperationHistory
+import com.luanadev.calculadora.ui.theme.CalculadoraTheme
 import com.luanadev.calculadora.ui.theme.Size_16
 import com.luanadev.calculadora.ui.theme.Spacing_16
 import com.luanadev.calculadora.ui.theme.Spacing_4
@@ -62,21 +65,46 @@ fun HistoryItem(item: OperationHistory) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(Spacing_16),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
                 text = item.operation,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontSize = Size_16,
                     fontWeight = FontWeight.Bold
-                )
+                ),
+                color = Color.Black
             )
             Text(
                 text = item.result,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontSize = Size_16
-                )
+                ),
+                color = Color.Black
             )
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewCalculatorHistoryEmptyList() {
+    CalculadoraTheme {
+        CalculatorHistory(
+            listOf()
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewCalculatorHistory() {
+    CalculadoraTheme {
+        CalculatorHistory(
+            listOf(
+                OperationHistory(operation = "5.0 + 3.0", result = "8.0")
+            )
+        )
+    }
+}
+

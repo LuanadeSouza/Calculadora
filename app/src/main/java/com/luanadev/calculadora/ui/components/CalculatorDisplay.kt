@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import com.luanadev.calculadora.ui.theme.CalculadoraTheme
 import com.luanadev.calculadora.ui.theme.Size_48
 import com.luanadev.calculadora.ui.theme.Spacing_120
 import com.luanadev.calculadora.ui.theme.Spacing_16
@@ -55,5 +57,15 @@ fun CalculatorDisplay(displayText: String) {
                 color = Color.Black
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewCalculatorDisplay() {
+    CalculadoraTheme {
+        CalculatorDisplay(
+            "123456"
+        )
     }
 }
