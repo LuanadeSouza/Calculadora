@@ -5,7 +5,6 @@ Calculadora é uma aplicação Android sofisticada e minimalista desenvolvida co
 ---
 
 ## 🎨 **Características do Projeto**
-- **Design Luxuoso**: Paleta de cores sofisticada em tons dourados e escuros, com foco em minimalismo e refinamento.
 - **Material Design 3**: Interface moderna e responsiva.
 - **Acessibilidade**: Componentes otimizados para leitores de tela e interações acessíveis.
 - **Testes Unitários**: Cobertura para validação de operações matemáticas e componentes da interface.
