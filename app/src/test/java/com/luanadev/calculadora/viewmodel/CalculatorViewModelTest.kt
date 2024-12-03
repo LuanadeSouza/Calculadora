@@ -2,29 +2,19 @@ package com.luanadev.calculadora.viewmodel
 
 import app.cash.turbine.test
 import com.luanadev.calculadora.data.model.OperationHistory
-import com.luanadev.calculadora.domain.usecase.ArithmeticOperationsUseCase
-import com.luanadev.calculadora.domain.usecase.OperationFactory
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Test
-import kotlin.test.assertEquals
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class CalculatorViewModelTest {
 
     private lateinit var viewModel: CalculatorViewModel
-    private val arithmeticOperations = ArithmeticOperationsUseCase()
-    private val operationFactory = OperationFactory(arithmeticOperations)
-
-    private val testDispatcher = StandardTestDispatcher()
 
     @Before
     fun setUp() {
-        // Configura o dispatcher de teste como o principal
-        setMain(testDispatcher)
         viewModel = CalculatorViewModel()
     }
 

@@ -53,8 +53,12 @@ dependencies {
     implementation(libs.androidx.ui.util)
     implementation(libs.androidx.material.icons)
     implementation(libs.kotlinx.coroutines.android)
-    
+    implementation(libs.coroutines.core)
+
+    testImplementation(libs.coroutines.test)
     testImplementation(libs.junit)
+    testImplementation(libs.turbine)
+    testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
