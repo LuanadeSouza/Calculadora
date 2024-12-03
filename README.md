@@ -1,6 +1,6 @@
 # **Calculadora 💎**
 
-Calculadora é uma aplicação Android sofisticada e minimalista desenvolvida com **Jetpack Compose**, projetada para oferecer uma experiência de cálculo de luxo. Este aplicativo utiliza **Material Design 3**, acessibilidade avançada, e uma paleta de cores elegante para entregar uma interface premium e funcional.
+Calculadora é uma aplicação Android desenvolvida com **Jetpack Compose**, projetada para oferecer uma experiência de cálculo. Este aplicativo utiliza **Material Design 3**, acessibilidade avançada, e uma paleta de cores para entregar uma interface funcional.
 
 ---
 
