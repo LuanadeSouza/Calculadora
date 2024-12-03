@@ -41,8 +41,8 @@ Calculadora é uma aplicação Android sofisticada e minimalista desenvolvida co
 
 ---
 
-## 🚀 **Funcionalidades Planejadas**
-1. **Layout Luxuoso**:
+## 🚀 **Funcionalidades**
+1. **Layout**:
    - Exibição premium dos botões e tela de resultados.
 2. **Acessibilidade Avançada**:
    - Compatibilidade com leitores de tela.
@@ -55,3 +55,6 @@ Calculadora é uma aplicação Android sofisticada e minimalista desenvolvida co
    - Verificação de acessibilidade dos componentes.
 
 ---
+<img src="https://github.com/user-attachments/assets/dd98a918-25cc-4e5b-931a-5b9cf044623a" alt="Immagem da Calculadora" width="300"/>
+<img src="https://github.com/user-attachments/assets/6016bdff-bbad-444f-895b-2630fd449be0" alt="Immagem da Calculadora" width="300"/>
+
