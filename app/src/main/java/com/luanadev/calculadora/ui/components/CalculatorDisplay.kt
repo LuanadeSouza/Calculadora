@@ -46,7 +46,9 @@ fun CalculatorDisplay(displayText: String) {
         ) {
             Text(
                 modifier =
-                Modifier.padding(Spacing_16),
+                Modifier
+                    .padding(Spacing_16)
+                    .semantics { contentDescription = "Texto atual: $displayText" },
                 text = when {
                     displayText.isBlank() -> "0" // Mostra "0" quando vazio
                     displayText == "NaN" -> "Erro" // Mostra "Erro" para resultados inválidos
