@@ -18,10 +18,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
+import com.luanadev.calculadora.ui.theme.MontserratFont
 import com.luanadev.calculadora.ui.theme.PrimaryColor
 import com.luanadev.calculadora.ui.theme.SecondaryColor
 import com.luanadev.calculadora.ui.theme.TextPrimary
-import com.luanadev.calculadora.ui.theme.MontserratFont
 
 @Composable
 fun CalculatorButton(
@@ -52,12 +52,10 @@ fun CalculatorButton(
             .semantics {
                 contentDescription = when (label) {
                     "+" -> "Botão de soma"
-                    "C" -> "Botão limpar"
+                    "-" -> "Botão de subtração"
+                    "*" -> "Botão de multiplicação"
+                    "/" -> "Botão de divisão"
                     "=" -> "Botão de igual"
-                    "." -> "Botão de ponto decimal"
-                    "±" -> "Botão para alternar o sinal"
-                    "%" -> "Botão de porcentagem"
-                    "√" -> "Botão de raiz quadrada"
                     else -> "Botão $label"
                 }
             }

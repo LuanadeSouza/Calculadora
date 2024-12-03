@@ -1,8 +1,10 @@
 package com.luanadev.calculadora.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.luanadev.calculadora.data.model.Operation
 import com.luanadev.calculadora.data.model.OperationHistory
-import com.luanadev.calculadora.domain.usecase.CalculateOperation
+import com.luanadev.calculadora.domain.usecase.ArithmeticOperationsUseCase
+import com.luanadev.calculadora.domain.usecase.OperationFactory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -17,14 +19,15 @@ class CalculatorViewModel : ViewModel() {
     private var previousValue: Double? = null
     private var currentOperator: String? = null
 
-    private val calculateOperation = CalculateOperation()
+    private val arithmeticOperations = ArithmeticOperationsUseCase()
+    private val operationFactory = OperationFactory(arithmeticOperations)
 
     fun onButtonClicked(input: String) {
         when (input) {
             "C" -> clearAll()
             "±" -> toggleSign()
             "%" -> applyPercentage()
-            "+", "−", "×", "÷", "^", "√" -> setOperator(input)
+            "+", "-", "*", "/", "^", "√" -> setOperator(input)
             "=" -> calculateResult()
             else -> appendNumber(input)
         }
@@ -58,14 +61,17 @@ class CalculatorViewModel : ViewModel() {
         val operator = currentOperator ?: return
         val firstValue = previousValue ?: return
 
-        val operation = OperationHistory(
-            operation = if (operator == "√") "$operator($firstValue)" else "$firstValue $operator $secondValue",
-            result = if (operator == "√") calculateOperation.execute(firstValue, operator = "√").toString()
-            else calculateOperation.execute(firstValue, secondValue, operator).toString()
+        val operation = Operation(firstValue, secondValue, operator)
+        val result = operationFactory.executeOperation(operation)
+
+        val operationHistory = OperationHistory(
+            operation = if (operator == "√") "$operator(${operation.number1})"
+            else "${operation.number1} ${operation.operator} ${operation.number2}",
+            result = result.toString()
         )
 
-        _history.value = _history.value + operation
-        _displayText.value = operation.result
+        _history.value = _history.value + operationHistory
+        _displayText.value = operationHistory.result
 
         previousValue = null
         currentOperator = null
@@ -75,4 +81,3 @@ class CalculatorViewModel : ViewModel() {
         _displayText.value = if (_displayText.value == "0") input else _displayText.value + input
     }
 }
-

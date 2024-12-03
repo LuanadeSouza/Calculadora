@@ -1,16 +1,14 @@
 package com.luanadev.calculadora.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
-import com.luanadev.calculadora.ui.theme.DarkBackground
 import com.luanadev.calculadora.ui.theme.LightBackground
 import com.luanadev.calculadora.ui.theme.PrimaryColor
 import com.luanadev.calculadora.ui.theme.SecondaryColor
@@ -18,12 +16,13 @@ import com.luanadev.calculadora.ui.theme.TextPrimary
 
 @Composable
 fun CalculatorGrid(onButtonClick: (String) -> Unit) {
+    // Configuração dos botões
     val buttons = listOf(
         listOf("C", "±", "%", "÷"),
         listOf("7", "8", "9", "×"),
         listOf("4", "5", "6", "−"),
         listOf("1", "2", "3", "+"),
-        listOf("0", ".", "=", "√") // Última linha com "0", ".", "=", e "√"
+        listOf("0", ".", "=", "√")
     )
 
     Column(
@@ -35,7 +34,7 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
         for (row in buttons) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly // Espaçamento uniforme
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 for (button in row) {
                     val isOperator = button in listOf("+", "−", "×", "÷", "=", "√")
@@ -45,15 +44,18 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
                         label = button,
                         onClick = { onButtonClick(button) },
                         backgroundColor = when {
-                            isOperator -> PrimaryColor // Azul Escuro
-                            isAction -> SecondaryColor // Verde Esmeralda
-                            else -> LightBackground // Cinza Claro
+                            isOperator -> PrimaryColor // Azul Escuro para operadores
+                            isAction -> SecondaryColor // Verde Esmeralda para ações
+                            else -> LightBackground // Cinza Claro para números
                         },
                         textColor = when {
                             isOperator -> TextPrimary // Branco
                             isAction -> TextPrimary // Branco
-                            else -> DarkBackground // Azul Acinzentado
-                        }
+                            else -> Color.Black //
+                        },
+                        modifier = Modifier
+                            .size(80.dp)
+                            .semantics { contentDescription = "Botão $button" }
                     )
                 }
             }
