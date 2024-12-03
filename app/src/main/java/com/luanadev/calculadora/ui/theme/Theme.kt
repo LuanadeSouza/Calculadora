@@ -8,7 +8,6 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun CalculadoraTheme(
@@ -48,7 +47,7 @@ fun LuxuriousTextPreview() {
         Text(
             text = "Calculadora de Luxo",
             color = MaterialTheme.colorScheme.primary,
-            fontSize = 24.sp,
+            fontSize = Size_24,
             fontWeight = FontWeight.Bold,
             fontFamily = MontserratFont
         )

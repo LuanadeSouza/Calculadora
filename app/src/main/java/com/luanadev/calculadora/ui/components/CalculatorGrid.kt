@@ -1,22 +1,27 @@
 package com.luanadev.calculadora.ui.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
 import com.luanadev.calculadora.ui.theme.LightBackground
 import com.luanadev.calculadora.ui.theme.PrimaryColor
 import com.luanadev.calculadora.ui.theme.SecondaryColor
+import com.luanadev.calculadora.ui.theme.Spacing_8
+import com.luanadev.calculadora.ui.theme.Spacing_80
 import com.luanadev.calculadora.ui.theme.TextPrimary
 
 @Composable
 fun CalculatorGrid(onButtonClick: (String) -> Unit) {
-    // Configuração dos botões
     val buttons = listOf(
         listOf("C", "±", "%", "÷"),
         listOf("7", "8", "9", "×"),
@@ -28,8 +33,8 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+            .padding(horizontal = Spacing_8),
+        verticalArrangement = Arrangement.spacedBy(Spacing_8)
     ) {
         for (row in buttons) {
             Row(
@@ -54,7 +59,7 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
                             else -> Color.Black //
                         },
                         modifier = Modifier
-                            .size(80.dp)
+                            .size(Spacing_80)
                             .semantics { contentDescription = "Botão $button" }
                     )
                 }

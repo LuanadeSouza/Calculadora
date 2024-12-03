@@ -6,7 +6,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -15,12 +19,12 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.luanadev.calculadora.ui.theme.CalculadoraTheme
 import com.luanadev.calculadora.ui.theme.MontserratFont
 import com.luanadev.calculadora.ui.theme.PrimaryColor
 import com.luanadev.calculadora.ui.theme.SecondaryColor
+import com.luanadev.calculadora.ui.theme.Size_26
+import com.luanadev.calculadora.ui.theme.Spacing_80
 import com.luanadev.calculadora.ui.theme.TextPrimary
 
 @Composable
@@ -48,7 +52,7 @@ fun CalculatorButton(
         shape = CircleShape,
         colors = ButtonDefaults.buttonColors(containerColor = animatedColor),
         modifier = modifier
-            .size(80.dp)
+            .size(Spacing_80)
             .semantics {
                 contentDescription = when (label) {
                     "+" -> "Botão de soma"
@@ -62,7 +66,7 @@ fun CalculatorButton(
     ) {
         Text(
             text = label,
-            fontSize = 26.sp,
+            fontSize = Size_26,
             fontWeight = FontWeight.Bold,
             fontFamily = MontserratFont,
             color = textColor

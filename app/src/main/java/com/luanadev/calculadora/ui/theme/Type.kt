@@ -3,23 +3,22 @@ package com.luanadev.calculadora.ui.theme
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     headlineLarge = TextStyle(
         fontFamily = MontserratFont,
         fontWeight = FontWeight.Bold,
-        fontSize = 32.sp
+        fontSize = Size_32
     ),
     bodyLarge = TextStyle(
         fontFamily = MontserratFont,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = Size_16
     ),
     labelLarge = TextStyle(
         fontFamily = MontserratFont,
         fontWeight = FontWeight.Medium,
-        fontSize = 14.sp
+        fontSize = Size_14
     )
 )

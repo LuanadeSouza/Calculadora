@@ -11,11 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.luanadev.calculadora.ui.theme.Size_48
+import com.luanadev.calculadora.ui.theme.Spacing_120
+import com.luanadev.calculadora.ui.theme.Spacing_16
 
 @Composable
 fun CalculatorDisplay(displayText: String) {
@@ -28,28 +30,29 @@ fun CalculatorDisplay(displayText: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(Spacing_16)
             .semantics { contentDescription = description }, // Descrição acessível
-        shape = RoundedCornerShape(16.dp),
-        // elevation = 8.dp
+        shape = RoundedCornerShape(Spacing_16),
     ) {
         Box(
             contentAlignment = Alignment.CenterEnd,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(120.dp)
+                .height(Spacing_120)
         ) {
             Text(
+                modifier =
+                Modifier.padding(Spacing_16),
                 text = when {
                     displayText.isBlank() -> "0" // Mostra "0" quando vazio
                     displayText == "NaN" -> "Erro" // Mostra "Erro" para resultados inválidos
                     else -> displayText
                 },
                 style = MaterialTheme.typography.headlineLarge.copy(
-                    fontSize = 48.sp
+                    fontSize = Size_48
                 ),
                 textAlign = TextAlign.End,
-                color = MaterialTheme.colorScheme.onSurface
+                color = Color.Black
             )
         }
     }
