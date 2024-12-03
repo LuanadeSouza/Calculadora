@@ -31,7 +31,7 @@ Calculadora é uma aplicação Android desenvolvida com **Jetpack Compose**, pro
 
 ## 🚀 **Funcionalidades**
 1. **Layout**:
-   - Exibição premium dos botões e tela de resultados.
+   - Exibição dos botões e tela de resultados.
 2. **Acessibilidade Avançada**:
    - Compatibilidade com leitores de tela.
    - Feedback visual e sonoro para ações do usuário.
