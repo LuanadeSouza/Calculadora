@@ -21,17 +21,6 @@ Calculadora é uma aplicação Android sofisticada e minimalista desenvolvida co
 
 ---
 
-## 🎨 **Paleta de Cores**
-| Nome          | Cor HEX   | Uso                              |
-|---------------|-----------|----------------------------------|
-| **Gold**      | `#FFD700` | Destaques principais e botões.  |
-| **Black**     | `#000000` | Fundo principal (modo escuro).  |
-| **Dark Gray** | `#121212` | Superfície de elementos.        |
-| **White**     | `#FFFFFF` | Texto no modo escuro.           |
-| **Gray**      | `#808080` | Elementos secundários.          |
-
----
-
 ## 🛠️ **Ferramentas e Tecnologias**
 - **Kotlin**
 - **Jetpack Compose**
