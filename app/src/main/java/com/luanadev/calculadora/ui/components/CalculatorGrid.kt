@@ -49,14 +49,14 @@ fun CalculatorGrid(onButtonClick: (String) -> Unit) {
                         label = button,
                         onClick = { onButtonClick(button) },
                         backgroundColor = when {
-                            isOperator -> PrimaryColor // Azul Escuro para operadores
-                            isAction -> SecondaryColor // Verde Esmeralda para ações
-                            else -> LightBackground // Cinza Claro para números
+                            isOperator -> PrimaryColor
+                            isAction -> SecondaryColor
+                            else -> LightBackground
                         },
                         textColor = when {
-                            isOperator -> TextPrimary // Branco
-                            isAction -> TextPrimary // Branco
-                            else -> Color.Black //
+                            isOperator -> TextPrimary
+                            isAction -> TextPrimary
+                            else -> Color.Black
                         },
                         modifier = Modifier
                             .size(Spacing_80)
