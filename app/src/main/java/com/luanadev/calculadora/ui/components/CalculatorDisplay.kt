@@ -1,5 +1,6 @@
 package com.luanadev.calculadora.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,6 +40,7 @@ fun CalculatorDisplay(displayText: String) {
         Box(
             contentAlignment = Alignment.CenterEnd,
             modifier = Modifier
+                .background(color = Color.White)
                 .fillMaxWidth()
                 .height(Spacing_120)
         ) {

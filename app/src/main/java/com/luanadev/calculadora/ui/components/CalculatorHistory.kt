@@ -1,5 +1,6 @@
 package com.luanadev.calculadora.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -63,6 +64,7 @@ fun HistoryItem(item: OperationHistory) {
     ) {
         Row(
             modifier = Modifier
+                .background(color = Color.White)
                 .fillMaxWidth()
                 .padding(Spacing_16),
             horizontalArrangement = Arrangement.SpaceBetween,
